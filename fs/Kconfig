@@ -259,7 +259,7 @@ config ARCH_SUPPORTS_HUGETLBFS
 
 menuconfig HUGETLBFS
 	bool "HugeTLB file system support"
-	depends on X86 || SPARC64 || ARCH_SUPPORTS_HUGETLBFS || BROKEN
+	depends on X86 || IA64 || SPARC64 || ARCH_SUPPORTS_HUGETLBFS || BROKEN
 	depends on (SYSFS || SYSCTL)
 	select MEMFD_CREATE
 	help

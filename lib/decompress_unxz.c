@@ -133,6 +133,9 @@
 #ifdef CONFIG_ARM
 #	define XZ_DEC_ARM
 #endif
+#ifdef CONFIG_IA64
+#	define XZ_DEC_IA64
+#endif
 #ifdef CONFIG_SPARC
 #	define XZ_DEC_SPARC
 #endif
