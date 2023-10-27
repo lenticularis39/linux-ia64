@@ -1713,8 +1713,9 @@ void force_sigsegv(int sig)
 		force_sig(SIGSEGV);
 }
 
-int force_sig_fault_to_task(int sig, int code, void __user *addr,
-			    struct task_struct *t)
+int force_sig_fault_to_task(int sig, int code, void __user *addr
+	___ARCH_SI_IA64(int imm, unsigned int flags, unsigned long isr)
+	, struct task_struct *t)
 {
 	struct kernel_siginfo info;
 
@@ -1723,15 +1724,24 @@ int force_sig_fault_to_task(int sig, int code, void __user *addr,
 	info.si_errno = 0;
 	info.si_code  = code;
 	info.si_addr  = addr;
+#ifdef __ia64__
+	info.si_imm = imm;
+	info.si_flags = flags;
+	info.si_isr = isr;
+#endif
 	return force_sig_info_to_task(&info, t, HANDLER_CURRENT);
 }
 
-int force_sig_fault(int sig, int code, void __user *addr)
+int force_sig_fault(int sig, int code, void __user *addr
+	___ARCH_SI_IA64(int imm, unsigned int flags, unsigned long isr))
 {
-	return force_sig_fault_to_task(sig, code, addr, current);
+	return force_sig_fault_to_task(sig, code, addr
+				       ___ARCH_SI_IA64(imm, flags, isr), current);
 }
 
-int send_sig_fault(int sig, int code, void __user *addr, struct task_struct *t)
+int send_sig_fault(int sig, int code, void __user *addr
+	___ARCH_SI_IA64(int imm, unsigned int flags, unsigned long isr)
+	, struct task_struct *t)
 {
 	struct kernel_siginfo info;
 
@@ -1740,6 +1750,11 @@ int send_sig_fault(int sig, int code, void __user *addr, struct task_struct *t)
 	info.si_errno = 0;
 	info.si_code  = code;
 	info.si_addr  = addr;
+#ifdef __ia64__
+	info.si_imm = imm;
+	info.si_flags = flags;
+	info.si_isr = isr;
+#endif
 	return send_sig_info(info.si_signo, &info, t);
 }
 
