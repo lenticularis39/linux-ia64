@@ -141,6 +141,9 @@
 #ifdef CONFIG_RISCV
 #	define XZ_DEC_RISCV
 #endif
+#ifdef CONFIG_IA64
+#	define XZ_DEC_IA64
+#endif
 #ifdef CONFIG_SPARC
 #	define XZ_DEC_SPARC
 #endif
