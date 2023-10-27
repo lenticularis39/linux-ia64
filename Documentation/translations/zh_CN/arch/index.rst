@@ -18,6 +18,7 @@
 TODOList:
 
 * arm/index
+* ia64/index
 * m68k/index
 * nios2/index
 * powerpc/index
