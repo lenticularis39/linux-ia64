@@ -418,6 +418,8 @@ reserve_memory (void)
 
 		memblock_reserve(addr, size);
 	}
+
+	memblock_set_node(0, PHYS_ADDR_MAX, &memblock.reserved, 0);
 }
 
 /**
