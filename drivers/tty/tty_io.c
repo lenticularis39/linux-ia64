@@ -1041,7 +1041,6 @@ out:
 	return ret;
 }
 
-#ifdef CONFIG_PRINT_QUOTA_WARNING
 /**
  * tty_write_message - write a message to a certain tty, not just the console.
  * @tty: the destination tty_struct
@@ -1052,8 +1051,6 @@ out:
  * needed.
  *
  * We must still hold the BTM and test the CLOSING flag for the moment.
- *
- * This function is DEPRECATED, do not use in new code.
  */
 void tty_write_message(struct tty_struct *tty, char *msg)
 {
@@ -1066,7 +1063,6 @@ void tty_write_message(struct tty_struct *tty, char *msg)
 		tty_write_unlock(tty);
 	}
 }
-#endif
 
 static ssize_t file_tty_write(struct file *file, struct kiocb *iocb, struct iov_iter *from)
 {
