@@ -238,6 +238,8 @@ int acpi_parse_mcfg (struct acpi_table_header *header);
 void acpi_table_print_madt_entry (struct acpi_subtable_header *madt);
 
 #if defined(CONFIG_X86) || defined(CONFIG_IA64) || defined(CONFIG_LOONGARCH)
+/* the following numa functions are architecture-dependent */
+void acpi_numa_slit_init (struct acpi_table_slit *slit);
 void acpi_numa_processor_affinity_init (struct acpi_srat_cpu_affinity *pa);
 #else
 static inline void
@@ -264,6 +266,8 @@ void acpi_numa_rintc_affinity_init(struct acpi_srat_rintc_affinity *pa);
 #else
 static inline void acpi_numa_rintc_affinity_init(struct acpi_srat_rintc_affinity *pa) { }
 #endif
+
+int acpi_numa_memory_affinity_init (struct acpi_srat_mem_affinity *ma);
 
 #ifndef PHYS_CPUID_INVALID
 typedef u32 phys_cpuid_t;
