@@ -34,6 +34,7 @@
  */
 #define pcibus_to_node(bus) PCI_CONTROLLER(bus)->node
 
+int early_cpu_to_node(int cpu);
 void build_cpu_to_node_map(void);
 
 #endif /* CONFIG_NUMA */
