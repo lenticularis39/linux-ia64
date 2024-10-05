@@ -36,6 +36,14 @@ struct ia64_node_data {
 #define local_node_data		(local_cpu_data->node_data)
 
 /*
+ * Undefine NODE_DATA from <linux/numa.h> beforehand for now, to silence the
+ * warnings due to ia64's own definition below.
+ */
+#ifdef NODE_DATA
+#undef NODE_DATA
+#endif
+
+/*
  * Given a node id, return a pointer to the pg_data_t for the node.
  *
  * NODE_DATA 	- should be used in all code not related to system
