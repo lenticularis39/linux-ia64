@@ -307,10 +307,10 @@ void ia64_init_itm(void)
 
 	if (platform_base_drift != -1) {
 		itc_drift = platform_base_drift*itc_ratio.num/itc_ratio.den;
-		printk("+/-%ldppm\n", itc_drift);
+		printk(KERN_CONT "+/-%ldppm\n", itc_drift);
 	} else {
 		itc_drift = -1;
-		printk("\n");
+		printk(KERN_CONT "\n");
 	}
 
 	local_cpu_data->proc_freq = (platform_base_freq*proc_ratio.num)/proc_ratio.den;
