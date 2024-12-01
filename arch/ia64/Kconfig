@@ -143,6 +143,7 @@ choice
 
 config IA64_PAGE_SIZE_4KB
 	bool "4KB"
+	select HAVE_PAGE_SIZE_4KB
 	help
 	  This lets you select the page size of the kernel.  For best IA-64
 	  performance, a page size of 8KB or 16KB is recommended.  For best
@@ -159,13 +160,16 @@ config IA64_PAGE_SIZE_4KB
 	  If you don't know what to do, choose 16KB.
 
 config IA64_PAGE_SIZE_8KB
+	select HAVE_PAGE_SIZE_8KB
 	bool "8KB"
 
 config IA64_PAGE_SIZE_16KB
+	select HAVE_PAGE_SIZE_16KB
 	bool "16KB"
 
 config IA64_PAGE_SIZE_64KB
 	depends on !ITANIUM
+	select HAVE_PAGE_SIZE_64KB
 	select PAGE_SIZE_64KB
 	bool "64KB"
 
