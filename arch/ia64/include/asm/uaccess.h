@@ -250,16 +250,7 @@ extern unsigned long __strnlen_user (const char __user *, long);
 static __inline__ void *
 xlate_dev_mem_ptr(phys_addr_t p)
 {
-	struct page *page;
-	void *ptr;
-
-	page = pfn_to_page(p >> PAGE_SHIFT);
-	if (PageUncached(page))
-		ptr = (void *)p + __IA64_UNCACHED_OFFSET;
-	else
-		ptr = __va(p);
-
-	return ptr;
+	return __va(p);
 }
 
 #endif /* _ASM_IA64_UACCESS_H */
