@@ -9,5 +9,7 @@ void efi_map_pal_code(void);
 void efi_memmap_walk(efi_freemem_callback_t, void *);
 void efi_memmap_walk_uc(efi_freemem_callback_t, void *);
 void efi_gettimeofday(struct timespec64 *ts);
+void efi_initialize_iomem_resources(struct resource *code_resource,
+		struct resource *data_resource, struct resource *bss_resource);
 
 #endif

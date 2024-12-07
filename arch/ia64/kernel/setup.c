@@ -53,6 +53,7 @@
 #include <linux/kexec.h>
 #include <linux/crash_dump.h>
 
+#include <asm/efi.h>
 #include <asm/mca.h>
 #include <asm/meminit.h>
 #include <asm/page.h>
